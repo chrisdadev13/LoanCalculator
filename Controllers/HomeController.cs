@@ -15,12 +15,14 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
-    }
-
-    public IActionResult Privacy()
-    {
-        return View();
+        Loan loan = new Loan();
+        loan.Payment = 0.0;
+        loan.TotalInterest = 0.0;
+        loan.TotalCost = 0.0;
+        loan.Rate = 3.5;
+        loan.Amount = 15000;
+        loan.Time = 60;
+        return View(loan);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -1,8 +1,34 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model LoanCalculator.Models.Loan
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+  <h1 class="mb-2">Loan Calculator</h1>
+  <div class="row">
+    <div class="col">
+      <form asp-controller="Home" asp-action="Index" method="post">
+        <div class="form-row">
+          <div class="form-group col-12">
+            <label asp-for="Amount">Loan Amount: </label>
+            <input type="number" class="form-control" id="lamount" min="1000" step="500" value=@Model.Amount asp-for="Amount" />
+          </div>
+          <div class="form-group col-12">
+            <label asp-for="Time">Time: </label>
+            <input type="number" class="form-control" id="ltime" min="1" value=@Model.Time asp-for="Time" />
+          </div>
+          <div class="form-group col-12">
+            <label asp-for="Rate">Rate: </label>
+            <input type="number" class="form-control" id="lrate" min="1" value=@Model.Rate asp-for="Rate" />
+          </div>
+        </div>
+        <button type="submit" class="btn btn-dark mt-2">Calculate</button>
+      </form>
+    </div>
+    <div class="col">
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+
+    </div>
+  </div>
 </div>
