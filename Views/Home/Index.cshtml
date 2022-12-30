@@ -23,12 +23,64 @@
       </form>
     </div>
     <div class="col">
-
+      <div id="paymentTitle">
+        <p>Your Montly Payments</p>
+      </div>
+      <p id="payment">
+        @Model.Payment.ToString("N")
+      </p>
+      <div class="row">
+        <div class="col-6">
+          <label class="text-left">Total Principal</label>
+        </div> 
+        <div class="col-6 text-right" id="totalPrincipal">
+          @Model.Amount.ToString("N")
+        </div> 
+        <div class="col-6">
+          <label class="text-left">Total Interest</label>
+        </div> 
+        <div class="col-6 text-right" id="totalInterest">
+          @Model.TotalInterest.ToString("N")
+        </div> 
+        <div class="col-6">
+          <label class="text-left">Total Cost</label>
+        </div> 
+        <div class="col-6 text-right" id="totalCost">
+          @Model.TotalCost.ToString("N")
+        </div> 
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
-
-    </div>
-  </div>
+  @if (Model.Payments.Count > 0)
+  {
+    <div class="row">
+      <div class="col">
+        <table id="scheduleTable" class="table table-striped table-hover">
+          <thead class="text-white bg-black">
+            <tr>
+              <th>Month</th>
+              <th>Payment</th>
+              <th>Principal</th>
+              <th>Interest</th>
+              <th>Total Interest</th>
+              <th>Balance</th>
+            </tr> 
+          </thead>
+          <tbody>
+            @foreach(var item in Model.Payments)
+            {
+              <tr>
+                <td>@item.Month</td>
+                <td>@item.Payment.ToString("N")</td>
+                <td>@item.MonthlyPrincipal.ToString("N")</td>
+                <td>@item.MonthlyInterest.ToString("N")</td>
+                <td>@item.TotalInterest.ToString("N")</td>
+                <td>@item.Balance.ToString("N")</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div> 
+  }
 </div>
